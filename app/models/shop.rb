@@ -1,4 +1,4 @@
-class Address < ApplicationRecord
+class Shop < ApplicationRecord
   belongs_to :user
 
   PREFECTURE_NAMES= [

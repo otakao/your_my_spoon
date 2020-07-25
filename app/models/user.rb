@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_one :address
-  has_many :comment, dependent: :destroy
+  has_one :shop
+  has_many :comments, dependent: :destroy
 
   validates :nickname, :last_name, :first_name, :last_name_furigana, :first_name_furigana, :birthday, presence: true
   validates :last_name, :first_name, format: { with: /\A[ぁ-んァ-ヶー一-龠]+\z/}
