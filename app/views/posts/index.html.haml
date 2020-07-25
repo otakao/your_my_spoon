@@ -1,0 +1,120 @@
+%body
+  #js-popup.popup
+    .popup__inner
+      .form
+        =form_with url: maps_path do |f|
+          =f.text_field :textbox, placeholder: "地名から探す", class: "area-research", autocomplete:"off"
+        %lavel{class:"icon"}
+          = icon('fas', 'search')                  
+      =link_to "現在地から探す",maps_path, class:"position"
+    #js-white-bg.white-background
+
+  .spoon-header 
+    .spoon-header__content
+      .spoon-header__content__title
+        %h1.header-title
+          Restaurant's Purchase Sharing  App
+        %p.header-text
+          コロナで助け合い！レストラン向け食材・テイクアウト用品の共同購入マッチングアプリ
+      .spoon-header__content__login
+        =link_to "ログイン",new_user_session_path, class:"user-session"
+        =link_to "新規登録",new_user_registration_path, class:"user-registration" 
+    .spoon-header__category
+      %p.content-header
+        お探しのアイテム一覧
+      .spoon-header__category__content
+        .spoon-header__category__content__box
+          =link_to "肉・肉加工品", class:"colona"
+          %span{class:"icon"} 
+            =icon('fas','meat')
+
+        .spoon-header__category__content__box
+          =link_to "魚・魚加工品", class:"help-staff"
+          %span.description
+            %span.text
+            %span.image
+              %span.image-icon
+        .spoon-header__category__content__box
+          =link_to "穀類・加工品", class:"food-stuff"
+          %span.description
+            %span.text
+            %span.image
+              %span.image-icon
+        .spoon-header__category__content__box
+          =link_to "調味料", class:"new-buiness"
+          %span.description
+            %span.text
+            %span.image
+              %span.image-icon
+        .spoon-header__category__content__box
+          =link_to "お酒・飲料", class:"grant-in-aid"
+          %span.description
+            %span.text
+            -# %span.image
+            %span._28xP7Srb
+              %span._34HRvzoL._2HBN-k68._3LkX-HIr
+
+        .spoon-header__category__content__box
+          =link_to "テイクアウト", class:"else"
+          %span.description
+            %span.text
+            %span.image
+              %span.image-icon  
+
+  #js-login.login-popup
+    .login-popup__inner
+      #js-close-btn.close-btn
+    #js-black-bg.black-background
+
+
+  .spoon-main
+    .spoon-main__content
+      .spoon-main__content__left
+        .spoon-main__content__left__form
+          %p.form-header
+            共同購入を募集中の近隣の飲食店を探す
+          =form_with url: maps_path do |f|
+            =f.text_field :textbox, placeholder: "地名から探す", id: "address", autocomplete:"off"
+          %lavel{class:"icon"}
+            = icon('fas', 'search')                  
+          =image_tag("shutterstock_1544355779.jpg")
+    .spoon-main__latest-lists
+      %p.main-title
+        貴店もお近くのお店を応援しませんか？
+      .spoon-main__latest-lists__inner
+        %ul.latest-lists__inner-box
+          %li.inner-box__left
+            .inner-box__left__upper-content
+            .inner-box__left__lower-content
+          %li.inner-box__center
+            .inner-box__left__upper-content
+            .inner-box__left__lower-content
+          %li.inner-box__right
+            .inner-box__left__upper-content
+            .inner-box__left__lower-content
+
+
+
+      -# .spoon-header__content__right
+      -#   =form_for user_session_path do |f|
+      -#     .spoon-header__content__right__login-panel
+      -#       .form-group
+      -#         %label ログインID
+      -#         .from-group__email
+      -#           =f.email_field :email, placeholder: "例）hoge" ,autocomplete:"off"
+      -#         %br/
+      -#         %label パスワード
+      -#         .form-group__password
+      -#           =f.password_field :password, placeholder:"パスワードを記入してください" ,autocomplete:"off"
+      -#         .form-group__submit
+      -#           =f.submit "ログイン", class: "btn-blue"
+        
+        -# .spoon-header__content__right__register-panel
+        -#   =link_to "新規会員登録", new_user_registration_path, class:"btn-orange"
+        -#   %p.site-explanation
+        -#     飲食店様の会員登録は無料です。
+
+
+
+  
+
