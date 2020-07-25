@@ -15,8 +15,11 @@
         %h1.header-title
           Restaurant's Purchase Sharing  App
         %p.header-text
-          コロナで助け合い！レストラン向け食材・テイクアウト用品の共同購入マッチングアプリ
-      .spoon-header__content__login
+          コロナで助け合い！食材・テイクアウト用品を共同購入したいレストラン同士を繋ぐマッチングアプリ
+      .spoon-header__content__user-login
+        %span{class:"plus"}
+          =icon('fa', 'plus-circle')
+        =link_to "投 稿", new_post_path, class:"post-btn"
         =link_to "ログイン",new_user_session_path, class:"user-session"
         =link_to "新規登録",new_user_registration_path, class:"user-registration" 
     .spoon-header__category

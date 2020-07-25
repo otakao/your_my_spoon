@@ -54,24 +54,43 @@
         font-size: 16px;
       }
     }
-    &__login{
+    &__user-login{
       margin-top: 10px;
+      display: flex;
+      .plus{
+        line-height: 2;
+        padding-left:7px;
+        font-size: 25px;
+        position: absolute;
+        color: #fff;
+      }
+      .post-btn{
+        background-color: #FF3366;
+        border-radius: 12px;
+        height:40px;
+        line-height: 2.5;
+        padding: 5px 20px 5px 45px;
+        text-decoration: none;
+        color: #fff;
+        margin-right: 25px;
+        font-size: 16px;
+      }
       .user-session{
         background-color: black;
         border-radius: 12px;
-        height:45px;
+        height:40px;
         line-height: 2.5;
-        padding: 15px 16px;
+        padding: 5px 20px;
         text-decoration: none;
         color: #fff;
-        margin-right: 10px;
+        margin-right: 25px;
       }
       .user-registration{
         background-color: black;
         border-radius: 12px;
-        height:45px;
+        height:40px;
         line-height: 2.5;
-        padding: 15px 16px;
+        padding: 5px 20px;
         text-decoration: none;
         color: #fff;
       }

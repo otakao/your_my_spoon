@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_123812) do
-
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2020_07_25_114003) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry"
+    t.integer "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,10 +55,14 @@ ActiveRecord::Schema.define(version: 2020_07_18_123812) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "desctiption", null: false
+    t.bigint "category_id"
+    t.integer "price", null: false
+    t.integer "condition", null: false
+    t.integer "delivery_place", null: false
+    t.integer "delivery_date", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "restaurants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,6 +71,36 @@ ActiveRecord::Schema.define(version: 2020_07_18_123812) do
     t.integer "prefecture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_images_on_shop_id"
+  end
+
+  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "shop_name", null: false
+    t.integer "postal_code", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "building"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shop_category_id"
+    t.bigint "shop_image_id"
+    t.index ["shop_category_id"], name: "index_shops_on_shop_category_id"
+    t.index ["shop_image_id"], name: "index_shops_on_shop_image_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,5 +127,7 @@ ActiveRecord::Schema.define(version: 2020_07_18_123812) do
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "images", "posts"
-  add_foreign_key "posts", "users"
+  add_foreign_key "shop_images", "shops"
+  add_foreign_key "shops", "shop_categories"
+  add_foreign_key "shops", "shop_images"
 end
