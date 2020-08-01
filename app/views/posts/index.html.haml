@@ -16,12 +16,20 @@
           Restaurant's Purchase Sharing  App
         %p.header-text
           コロナで助け合い！食材・テイクアウト用品を共同購入したいレストラン同士を繋ぐマッチングアプリ
-      .spoon-header__content__user-login
+      .spoon-header__content__user-nav
         %span{class:"plus"}
           =icon('fa', 'plus-circle')
         =link_to "投 稿", new_post_path, class:"post-btn"
-        =link_to "ログイン",new_user_session_path, class:"user-session"
-        =link_to "新規登録",new_user_registration_path, class:"user-registration" 
+        .spoon-header__content__user-nav__login
+          - if user_signed_in?
+            =link_to "マイページ", "#", class:"sign_button.mypage"
+            =link_to "ログアウト", destroy_user_session_path, method: :delete, class:"sign_button.sign_out_button"
+          - else
+            .sign_button.sign_in_button
+              ログイン
+            .sign_button.sign_up_button
+              新規登録
+            
     .spoon-header__category
       %p.content-header
         お探しのアイテム一覧
@@ -64,11 +72,49 @@
             %span.image
               %span.image-icon  
 
-  #js-login.login-popup
-    .login-popup__inner
-      #js-close-btn.close-btn
-    #js-black-bg.black-background
+  .sign_modal_wrapper
+  .sign_modal
+    %i.fa.fa-window-close
+    .sign_up_modal.sign_modal_content
+      %h2 
+        新規登録フォーム
+      .form-group
+        %form#new_user.new_user{"accept-charset" => "UTF-8", :action => "/users", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "1FaAKgVoDDCAo9Vdnzda4OGzf7t3y8Nq6nFE5pexXYeH2vhGdAr//r2l5C08t6W2HwQqas+pjPWCM2I+ZO2NPQ=="}/
+          .field
+            %label{:for => "user_ニックネーム"} ニックネーム
+            %br/
+            %input#user_nickname{:autocomplete => "nickname", :autofocus => "autofocus", :name => "user[nickname]", :type => "text"}/
+          .field
+            %label{:for => "user_メールアドレス"} メールアドレス
+            %br/
+            %input#user_email{:autocomplete => "email", :autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}/
+          .field
+            %label{:for => "user_パスワード"} パスワード
+            %em (6 characters minimum)
+            %br/
+            %input#user_password{:autocomplete => "new-password", :name => "user[password]", :type => "password"}/
+          .actions
+            %input#submit{"data-disable-with" => "アカウント作成", :name => "commit", :type => "submit", :value => "アカウント作成"}/
 
+    .sign_in_modal.sign_modal_content
+      %h2 
+        ログインフォーム
+      .form-group
+        %form#new_user.new_user{"accept-charset" => "UTF-8", :action => "/users/sign_in", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "1GdiSCqPoBZlFb1CnR2ArBBVassxINAoEh0gnh4VhK6H6xokW+1T2FgTjDI+nX/67uI/GolCn7d6XwZG7UlUFA=="}/
+          .field
+            %label{:for => "user_メールアドレス"} メールアドレス
+            %br/
+            %input#user_email{:autocomplete => "email", :autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}/
+          .field
+            %label{:for => "user_パスワード"} パスワード
+            %br/
+            %input#user_password{:autocomplete => "current-password", :name => "user[password]", :type => "password"}/
+          .actions
+            %input#submit{"data-disable-with" => "ログイン", :name => "commit", :type => "submit", :value => "ログイン"}/
 
   .spoon-main
     .spoon-main__content

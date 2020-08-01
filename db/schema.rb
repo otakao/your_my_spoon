@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_114003) do
+ActiveRecord::Schema.define(version: 2020_08_01_074002) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "postal_code", null: false
+    t.string "prefecture_name", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "building"
+    t.bigint "tel"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -80,39 +95,10 @@ ActiveRecord::Schema.define(version: 2020_07_25_114003) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shop_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "shop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_shop_images_on_shop_id"
-  end
-
-  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "shop_name", null: false
-    t.integer "postal_code", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "street", null: false
-    t.string "building"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "shop_category_id"
-    t.bigint "shop_image_id"
-    t.index ["shop_category_id"], name: "index_shops_on_shop_category_id"
-    t.index ["shop_image_id"], name: "index_shops_on_shop_image_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "first_name_furigana", null: false
-    t.string "last_name_furigana", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.date "birthday", null: false
-    t.integer "tel"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -122,12 +108,10 @@ ActiveRecord::Schema.define(version: 2020_07_25_114003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "images", "posts"
-  add_foreign_key "shop_images", "shops"
-  add_foreign_key "shops", "shop_categories"
-  add_foreign_key "shops", "shop_images"
 end
