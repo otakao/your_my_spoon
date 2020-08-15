@@ -73,3 +73,6 @@ gem 'font-awesome-sass'
 gem 'pry-rails'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'gmaps4rails'
+gem "geocoder"
+

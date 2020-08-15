@@ -1,0 +1,37 @@
+.my-page
+  .my-page__header
+  .my-page__main
+    .my-page__main__photo-area
+      %span.ui_icon.photo
+        = icon('fas', 'camera')
+      %span.photo-capture
+        ヘッダー画像を追加
+    .my-page__main__container
+      .my-page__main__container__profile
+        .my-page__main__container__profile__photo
+          =image_tag "350132_s.jpg",class:"photo"
+        .my-page__main__container__profile__name
+          =current_user.nickname
+
+      %ul.mypage-lists 
+        - if current_user.address.present?
+          %li.mypage-list
+            =link_to 'プロフィールを編集', edit_address_path(@address), class: 'mypage-list__item shipping'
+        - else
+          %li.mypage-list
+            =link_to 'プロフィールを登録', new_address_path, class: 'mypage-list__item shipping'
+      .my-page__main__container__my-lists
+        - @posts.zip(@images).each do |post,image| 
+          .my-page__main__container__my-lists__list
+            .my-page__main__container__my-lists__list__photo
+              = image_tag @first_image.image_url, class:"list-photo"
+            .my-page__main__container__my-lists__list__content
+              =link_to post_path(post), class:"item-detail" do
+                .my-page__main__container__my-lists__list__content__item-name
+                  = post.title
+                .my-page__main__container__my-lists__list__content__date
+                  投稿日時:
+                  = post.created_at.to_s(:datetime_jp)
+
+
+

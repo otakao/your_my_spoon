@@ -1,0 +1,109 @@
+.spoon-header{
+  padding: 10px 80px;  
+  &__content{
+    display: flex;
+    justify-content: space-between;
+    &__title{
+      h1.header-title{
+        a{
+        font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;  
+        font-size: 30px;
+        font-weight: 900;
+        text-decoration: none;
+        color: black;
+        }
+      }
+      p.header-text{
+        font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;  
+        font-size: 16px;
+      }
+    }
+    &__user-nav{
+      margin-top: 10px;
+      display: flex;
+      .plus{
+        line-height: 2;
+        padding-left:7px;
+        font-size: 25px;
+        position: absolute;
+        color: #fff;
+      }
+      .post-btn{
+        background-color: #FF3366;
+        border-radius: 12px;
+        height:40px;
+        line-height: 2.5;
+        padding: 5px 20px 5px 45px;
+        text-decoration: none;
+        color: #fff;
+        margin-right: 25px;
+        font-size: 16px;
+      }
+      &__login{
+        display: flex;
+        .sign_button.sign_in_button{
+          background-color: black;
+          border-radius: 12px;
+          height:40px;
+          line-height: 2.5;
+          padding: 5px 20px;
+          text-decoration: none;
+          color: #fff;        
+          margin-right: 25px;
+        }
+       
+        .sign_button.sign_up_button{
+          background-color: black;
+          border-radius: 12px;
+          height:40px;
+          line-height: 2.5;
+          padding: 5px 20px;
+          text-decoration: none;
+          color: #fff;          
+        }       
+        a#mypage{
+          background-color: black;
+          border-radius: 12px;
+          height:40px;
+          line-height: 2.5;
+          padding: 5px 20px;
+          text-decoration: none;
+          color: #fff;        
+          margin-right: 25px;
+        }
+        a#sign_out{
+          background-color: black;
+          border-radius: 12px;
+          height:40px;
+          line-height: 2.5;
+          padding: 5px 20px;
+          text-decoration: none;
+          color: #fff;          
+        }
+      }
+      &__login{
+        display: flex;
+        .sign_button.mypage{
+          background-color: black;
+          border-radius: 12px;
+          height:40px;
+          line-height: 2.5;
+          padding: 5px 20px;
+          text-decoration: none;
+          color: #fff;        
+          margin-right: 25px;  
+        }
+        .sign_button.sign_out_button{
+          background-color: black;
+          border-radius: 12px;
+          height:40px;
+          line-height: 2.5;
+          padding: 5px 20px;
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+}

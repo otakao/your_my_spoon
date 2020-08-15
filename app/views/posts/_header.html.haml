@@ -1,0 +1,21 @@
+.spoon-header 
+  .spoon-header__content
+    .spoon-header__content__title
+      %h1.header-title
+        =link_to "Restaurant's Purchase Sharing App",root_path 
+
+      %p.header-text
+        コロナで助け合い！食材・テイクアウト用品を共同購入したいレストラン同士を繋ぐマッチングアプリ
+    .spoon-header__content__user-nav
+      %span{class:"plus"}
+        =icon('fa', 'plus-circle')
+      =link_to "投 稿", new_post_path, class:"post-btn"
+      .spoon-header__content__user-nav__login
+        - if user_signed_in?
+          =link_to "マイページ", user_path(current_user.id), id:"mypage"
+          =link_to "ログアウト", destroy_user_session_path, method: :delete, id:"sign_out"
+        - else
+          .sign_button.sign_in_button
+            ログイン
+          .sign_button.sign_up_button
+            新規登録

@@ -1,2 +1,79 @@
-%h1 Posts#new
-%p Find me in app/views/posts/new.html.erb
+.spoon-registration
+  .spoon-registration__header
+    .spppon-registration__header__content
+      -# %ul.nav-bar
+      -#   %li 概要
+      -#   %li 掲載ページの管理
+      -#   %li 広告
+      -#   %li ヘルプ&設定
+      -#   %li 口コミ
+      -#   %li パフォーマンス
+      -#   %li マーケティングツール
+  .spoon-registration__main
+    .spoon-registration__main__nav-bar
+      %ul.menu
+        %li.active
+          一般
+        %li.position
+          所在地
+        %li.opentime
+          営業時間
+        %li.service
+          サービス
+        %li.foodmenu
+          メニュー
+        %li.support
+          掲載サポート
+        %li.three-reason
+          ３つの理由
+
+    .spoon-registration__main__form
+      %h1.title
+        共同購入商品の新規投稿
+      -# %p1.description
+      -#   以下の内容を周囲の飲食店に知らせましょう
+      =form_with model:@post, local: true do |f|
+        .form-group
+          .form-group__section1
+            %h2.header
+              商品情報
+            .form-inner
+              %label 商品名
+              = f.text_field :title, placeholder:"商品名"
+
+            .form-inner
+              %label カテゴリー
+              = f.select :category_id, [['肉・肉加工品',1],['魚・魚加工品',2],['穀類・加工品',3],['調味料',4],['お酒・飲料',5],['テイクアウト',6]], prompt: '未選択'
+
+            .form-inner
+              %label 商品の写真
+              = f.fields_for :images do |image|
+                =image.file_field :image, class:"item-file"
+
+            .form-inner
+              %label 商品の詳細
+              = f.text_area :description, placeholder:"商品の詳細"
+
+
+          .form-group__section2
+            %h2.header
+              取引条件
+            .form-inner
+              %label 価格
+              = f.number_field :price, placeholder:"価格"
+
+            .form-inner
+              %label 商品の状態
+              = f.select :condition, [['常温',1],['冷蔵',2],['冷凍',3]],prompt: '未選択'
+
+            .form-inner
+              %label 受取方法
+              = f.select :delivery_place, [['当店にて受取',1],['貴店まで配送希望',2]],prompt: '未選択'
+
+            .form-inner
+              %label 受取期限（到着から何日まで）
+              = f.select :delivery_date, [['当日',1],['1日〜3日以内',2],['4日〜7日以内',3],['2週間以内',4],['2週間以上先も可',5]],prompt: '未選択'
+
+          .form-group__section3
+            .form-inner
+              = f.submit "送信", class:"form-submit"

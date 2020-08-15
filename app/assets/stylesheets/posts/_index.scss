@@ -38,132 +38,49 @@
   visibility: visible;
 }
 
-.spoon-header{
+  
+
+.spoon-category{
+  padding-top: 40px;
   padding: 10px 80px;  
+
   &__content{
     display: flex;
     justify-content: space-between;
-    &__title{
-      h1.header-title{
-        font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;  
-        font-size: 30px;
-        font-weight: 900;
-      }
-      p.header-text{
-        font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;  
-        font-size: 16px;
-      }
-    }
-    &__user-nav{
-      margin-top: 10px;
-      display: flex;
-      .plus{
-        line-height: 2;
-        padding-left:7px;
-        font-size: 25px;
-        position: absolute;
+      
+    &__box{
+      position: relative;
+      border:1px solid black;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 1s;
+      box-sizing: border-box;
+      height:100%;
+      min-height: 48px;
+      width: 100%;
+      padding: 0px 15px;
+      margin-right: 35px;
+      text-align:center;
+      line-height: 3;
+      transition: color 300ms, background-color 300ms;
+      z-index:2;
+      &:hover{
+        background-color: #333;
         color: #fff;
       }
-      .post-btn{
-        background-color: #FF3366;
-        border-radius: 12px;
-        height:40px;
-        line-height: 2.5;
-        padding: 5px 20px 5px 45px;
-        text-decoration: none;
-        color: #fff;
-        margin-right: 25px;
-        font-size: 16px;
-      }
-      &__login{
-        display: flex;
-        .sign_button.sign_in_button{
-          background-color: black;
-          border-radius: 12px;
-          height:40px;
-          line-height: 2.5;
-          padding: 5px 20px;
-          text-decoration: none;
-          color: #fff;        
-          margin-right: 25px;
-        }
-       
-        .sign_button.sign_up_button{
-          background-color: black;
-          border-radius: 12px;
-          height:40px;
-          line-height: 2.5;
-          padding: 5px 20px;
-          text-decoration: none;
-          color: #fff;          
-        }       
-      }
-      &__login{
-        display: flex;
-        .sign_button.mypage{
-          background-color: black;
-          border-radius: 12px;
-          height:40px;
-          line-height: 2.5;
-          padding: 5px 20px;
-          text-decoration: none;
-          color: #fff;        
-          margin-right: 25px;  
-        }
-        .sign_button.sign_out_button{
-          background-color: black;
-          border-radius: 12px;
-          height:40px;
-          line-height: 2.5;
-          padding: 5px 20px;
-          text-decoration: none;
-          color: #fff;
-        }
-      }
-    }
-  }
-  &__category{
-    padding-top: 40px;
-
-    &__content{
-      display: flex;
-      justify-content: space-between;
-        
-      &__box{
-        position: relative;
-        border:1px solid black;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: 1s;
-        box-sizing: border-box;
-        height:100%;
-        min-height: 48px;
-        width: 100%;
-        padding: 0px 15px;
-        margin-right: 35px;
-        text-align:center;
-        line-height: 3;
+      a{
         transition: color 300ms, background-color 300ms;
-        z-index:2;
+        overflow: hidden;
+        padding: 11px 13px 11px 14px;
+        text-decoration: none;
         &:hover{
-          background-color: #333;
           color: #fff;
-        }
-        a{
-          transition: color 300ms, background-color 300ms;
-          overflow: hidden;
-          padding: 11px 13px 11px 14px;
-          text-decoration: none;
-          &:hover{
-            color: #fff;
-          }  
-          color: black;
-        }
+        }  
+        color: black;
       }
-    } 
-  }
-}  
-
+    }
+  } 
+}
 .sign_button{
   cursor: pointer;
 }
@@ -264,7 +181,7 @@
           right: 0;
          
         }
-        #address{
+        #position{
           width: calc(100% - 48px);
           position: relative;
           line-height:65px;
@@ -350,6 +267,7 @@
       } 
     }
   }
+
   &__latest-lists{
     padding: 50px 80px;
     p.main-title{
@@ -371,25 +289,75 @@
     }
     &__inner{
       padding-top: 30px;
-      ul.latest-lists__inner-box{
-        display: flex;    
-        justify-content: space-between;
-        li.inner-box__left,li.inner-box__center,li.inner-box__right{
-          width: 900px;
-          margin-right: 25px;
-          height: 400px;
-          background: #FAF0E6;
-          .inner-box__left__upper-content{
-            height: 250px;            
+      width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      .inner-box__list{
+        margin: 0 auto;
+        a{
+          text-decoration: none;
+          color: black;
+        }
+        li{
+          padding-left: 20px;          
+        }
+        &__img{
+            position: relative;
+          .photo-inner{
+            width: 0px;
+            height: 0px;
+            border-width: 90px 90px 0 0;
+            border-color: #ea352d transparent transparent transparent;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 3;
+            z-index: 1;
+            border-style: solid;
+            .photo-inner__capture{
+              top: -95px;
+              font-size: 18px;
+              position: absolute;
+              left: 20px;
+              z-index: 2;
+              color: #fff;
+              transform: rotate(40deg);
+              letter-spacing: 3px;
+              font-weight: 600;
+            }
           }
-          .inner-box__left__lower-content{
-            height:calc(100%-350px);
-            padding: 28px 32px 24px;
+        }
+        &__title{
+          padding-bottom: 10px;
+          .item-name{
+            padding: 3px 8px;
+            font-size: 12px;
+            border: 1px solid;
+            border-radius: 4px;
           }
-        }    
-      }
+          .post-nickname{
+            padding-left: 12px;
+            font-size: 15px;
+          }
+        }
+        &__shop-detail{
+          display: flex;
+          padding-bottom: 10px;
+          .shop-name{
+            font-size :18px;
+            font-weight: 700; 
+            padding-right: 15px;  
+          }
+        }
+        &__title{
 
-
+        }
+        }
+        
     }
+
+
   }
 }
+

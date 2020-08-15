@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
   var popup = document.getElementById('js-popup')
 
-  let btn = document.getElementById("address");
+  let btn = document.getElementById("position");
   let WhiteBG = document.getElementById('js-white-bg');
  
   closepopup(btn);

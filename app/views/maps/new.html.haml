@@ -1,0 +1,6 @@
+%input{:onclick => "initMap()", :type => "button", :value => "Encode"}/
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:GOOGLE_MAP_KEY]}&callback=initMap"}
+
+-# #map{style:"height:400px;width:600px"}
+-# %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:GOOGLE_MAP_KEY]}&callback=initMap"}
+
