@@ -1,0 +1,40 @@
+%p#notice= notice
+%p
+  %strong 郵便番号:
+  = "#{@address.postal_code}"
+  %br
+  %strong 都道府県:
+  = "#{@address.prefecture_name}"
+  %br
+  %strong 市区町村・番地:
+  = "#{@address.city}"
+  %br
+%p
+  %strong 商品名:
+  = "#{@post.title}"
+  %br
+  %strong カテゴリー:
+  = "#{@post.category_id}"
+  %br
+  %strong 商品の詳細:
+  = "#{@post.description}"
+
+-# %p
+-#   %strong Latitude:
+-#   = @place.latitude
+-# %p
+-#   %strong Longitude:
+-#   = @place.longitude
+= link_to 'Edit', edit_post_path(@post)
+
+= link_to 'Back', maps_path
+#map{:style => "width: 800px; height: 400px;"}
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    // handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+    handler.getMap().setZoom(12);
+  });

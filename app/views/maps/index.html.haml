@@ -1,5 +1,12 @@
-%input{:onclick => "initMap()", :type => "button", :value => "Encode"}/
-%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key={Rails.application.credentials[:google_maps][:api_key]}&callback=initMap"}
+#map{style:"height:400px;width:600px"}
 
-#gmap{style:"height:400px;width:600px"}
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+    handler.getMap().setZoom(12);
 
+  });

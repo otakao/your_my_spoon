@@ -1,0 +1,112 @@
+.my-page{
+  &__header{
+    height: 42px;
+    line-height: 28px;
+    padding: 0 8px;
+    max-width: 1280;
+    border-bottom: 2px solid #C0C0C0;
+  }
+  &__main{
+    background-color: #f2f2f2;
+    
+    &__photo-area{
+      height: 250px;
+      background-color: rgb(224,224,224);
+      text-align: center;
+      line-height: 15;
+      position: relative;
+      .ui_icon.photo{
+        text-align: center;
+      }
+      .photo-capture{
+        text-align: center;
+      }
+    }
+    &__container{
+      max-width: 1280px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #fff;
+      
+      padding: 24px 24px;
+      &__profile{
+        height: 126px;
+        margin-top: 0;
+        display: flex;
+        &__photo{
+          margin-right: 12px;
+          width: 126px;
+          height: 126px;
+          border-radius: 100%
+        }
+        &__name{
+          font-size: 24px;
+          line-height: 28px;
+          font-weight: 700;
+        }      
+        .photo{
+          display: block;
+          width: 120px;
+          height: 120px;
+          margin: 3px;
+          border-radius: inherit;
+        }
+      }
+      .mypage-lists{
+        padding: 8px 16px;
+        a{
+          text-decoration: none;
+          color: black;
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: 700;
+          box-sizing: border-box;
+          border-color:#e0e0e0;
+          border-radius:3px;
+          background-color: #fff;
+          }
+      } 
+
+      &__my-lists{
+        width: 983px;
+        margin: 0 auto;
+        padding-top: 20px;
+        &__list{
+          min-height: 196px;
+          border: 1px solid #eceae2;
+          border-bottom-color: #dddbd0;
+          margin-bottom: 6px;
+          top:0 ;
+          position: relative;
+          background: #fff;
+          &__photo{
+            margin: 1px;
+            position: absolute;
+            top: 0;
+            left:  0;
+            .list-photo{
+              width: 240px;
+              height: 194px;
+            }
+          }
+          &__content{
+            margin-top: 18px;
+            margin-left: 262px;
+            a{
+              text-decoration: none;
+              color: black;
+            }
+            &__item-name{
+                font-size: 24px;
+                line-height: 28px;
+                font-weight: 700;
+                padding-bottom: 12px;              
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

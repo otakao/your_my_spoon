@@ -4,12 +4,17 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
 
       t.string :last_name, null: false
       t.string :first_name, null: false
+      t.string :shop_name, null: false
+      t.integer :shop_category, null: false
+      t.integer :position, null: false
       t.string :postal_code, null:false
       t.string :prefecture_name, null: false
       t.string :city, null: false
       t.string :street, null: false
       t.string :building
       t.bigint :tel, limit: 4
+      t.float :latitude
+      t.float :longitude
       t.references :user, foreign_key: true
 
       t.timestamps

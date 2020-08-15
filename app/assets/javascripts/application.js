@@ -13,4 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require underscore
+//= require gmaps/google
 //= require_tree .

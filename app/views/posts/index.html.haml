@@ -2,75 +2,62 @@
   #js-popup.popup
     .popup__inner
       .form
-        =form_with url: maps_path do |f|
-          =f.text_field :textbox, placeholder: "地名から探す", class: "area-research", autocomplete:"off"
+        %form{action: maps_path , :method => "GET"}
+          %input#address{type: "search", placeholder: "検索", onclick: "codeAddress()"}/
+          -# %input.form-text{:placeholder => "検索", :type => "seach"}/
+        
+          -# %input{:onclick => "codeAddress()", :type => "button", :value => "Encode"}/
+        -# =form_with model: @map, local: true do |f|
+        -#   %input#hidden_address{type: "hidden", name: "map[address]"}/
+        -#   =f.text_field :name, placeholder: "地名から探す", class: "area-research", autocomplete:"off"
+        -#   =f.submit "送信" ,class: "arearesearch-submit"
         %lavel{class:"icon"}
           = icon('fas', 'search')                  
       =link_to "現在地から探す",maps_path, class:"position"
     #js-white-bg.white-background
 
-  .spoon-header 
-    .spoon-header__content
-      .spoon-header__content__title
-        %h1.header-title
-          Restaurant's Purchase Sharing  App
-        %p.header-text
-          コロナで助け合い！食材・テイクアウト用品を共同購入したいレストラン同士を繋ぐマッチングアプリ
-      .spoon-header__content__user-nav
-        %span{class:"plus"}
-          =icon('fa', 'plus-circle')
-        =link_to "投 稿", new_post_path, class:"post-btn"
-        .spoon-header__content__user-nav__login
-          - if user_signed_in?
-            =link_to "マイページ", "#", class:"sign_button.mypage"
-            =link_to "ログアウト", destroy_user_session_path, method: :delete, class:"sign_button.sign_out_button"
-          - else
-            .sign_button.sign_in_button
-              ログイン
-            .sign_button.sign_up_button
-              新規登録
             
-    .spoon-header__category
-      %p.content-header
-        お探しのアイテム一覧
-      .spoon-header__category__content
-        .spoon-header__category__content__box
-          =link_to "肉・肉加工品", class:"colona"
-          %span{class:"icon"} 
-            =icon('fas','meat')
+  .spoon-category
+    %p.content-header
+      お探しのアイテム一覧
+    .spoon-category__content
+      .spoon-category__content__box
+        =link_to "肉・肉加工品", class:"colona"
+        %span{class:"icon"} 
+          =icon('fas','meat')
 
-        .spoon-header__category__content__box
-          =link_to "魚・魚加工品", class:"help-staff"
-          %span.description
-            %span.text
-            %span.image
-              %span.image-icon
-        .spoon-header__category__content__box
-          =link_to "穀類・加工品", class:"food-stuff"
-          %span.description
-            %span.text
-            %span.image
-              %span.image-icon
-        .spoon-header__category__content__box
-          =link_to "調味料", class:"new-buiness"
-          %span.description
-            %span.text
-            %span.image
-              %span.image-icon
-        .spoon-header__category__content__box
-          =link_to "お酒・飲料", class:"grant-in-aid"
-          %span.description
-            %span.text
-            -# %span.image
-            %span._28xP7Srb
-              %span._34HRvzoL._2HBN-k68._3LkX-HIr
+      .spoon-category__content__box
+        =link_to "魚・魚加工品", class:"help-staff"
+        %span.description
+          %span.text
+          %span.image
+            %span.image-icon
+      .spoon-category__content__box
+        =link_to "穀類・加工品", class:"food-stuff"
+        %span.description
+          %span.text
+          %span.image
+            %span.image-icon
+      .spoon-category__content__box
+        =link_to "調味料", class:"new-buiness"
+        %span.description
+          %span.text
+          %span.image
+            %span.image-icon
+      .spoon-category__content__box
+        =link_to "お酒・飲料", class:"grant-in-aid"
+        %span.description
+          %span.text
+          -# %span.image
+          %span._28xP7Srb
+            %span._34HRvzoL._2HBN-k68._3LkX-HIr
 
-        .spoon-header__category__content__box
-          =link_to "テイクアウト", class:"else"
-          %span.description
-            %span.text
-            %span.image
-              %span.image-icon  
+      .spoon-category__content__box
+        =link_to "テイクアウト", class:"else"
+        %span.description
+          %span.text
+          %span.image
+            %span.image-icon  
 
   .sign_modal_wrapper
   .sign_modal
@@ -121,27 +108,36 @@
       .spoon-main__content__left
         .spoon-main__content__left__form
           %p.form-header
-            共同購入を募集中の近隣の飲食店を探す
+            食材の共同購入を募集中の飲食店を探す
           =form_with url: maps_path do |f|
-            =f.text_field :textbox, placeholder: "地名から探す", id: "address", autocomplete:"off"
+            =f.text_field :textbox, placeholder: "地名から探す", id: "position", autocomplete:"off"
           %lavel{class:"icon"}
             = icon('fas', 'search')                  
           =image_tag("shutterstock_1544355779.jpg")
     .spoon-main__latest-lists
       %p.main-title
-        貴店もお近くのお店を応援しませんか？
+        貴店も一緒に共同購入しませんか？
       .spoon-main__latest-lists__inner
-        %ul.latest-lists__inner-box
-          %li.inner-box__left
-            .inner-box__left__upper-content
-            .inner-box__left__lower-content
-          %li.inner-box__center
-            .inner-box__left__upper-content
-            .inner-box__left__lower-content
-          %li.inner-box__right
-            .inner-box__left__upper-content
-            .inner-box__left__lower-content
-
+        - @posts.zip(@images).each do |post,image|
+          %ul.inner-box__list
+            =link_to post_path(post),class:"post-detail" do
+              %li.inner-box__list__img
+                =image_tag image.first.image_url, size: "302x226"
+                .photo-inner
+                  .photo-inner__capture
+                    募集中
+              %li.inner-box__list__title
+                %span.item-name
+                  = post.title
+                %span.post-nickname
+                  = post.user.nickname             
+              %li.inner-box__list__shop-detail
+                .shop-name
+                  = post.user.address.shop_name
+                .shop-address
+                  = post.user.address.prefecture_name
+                  = post.user.address.city  
+              
 
 
       -# .spoon-header__content__right

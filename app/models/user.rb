@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one :shop
+  has_one :address 
   has_many :comments, dependent: :destroy
 
   validates :nickname, presence: true

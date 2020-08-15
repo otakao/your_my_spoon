@@ -1,0 +1,78 @@
+.address-resistration
+  .address-resistration__header
+    %h2.address-resistration__header 
+      =current_user.nickname
+      さんのプロフィール情報
+  .address-resistration__main
+    = form_with model: @address, local: true do |f|
+      %ul.address-resistration__main__content
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'last_name'} 姓
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.text_field :last_name, class: 'text-form'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'first_name'} 名
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.text_field :first_name, class: 'text-form'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'shop_name'} 店名
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.text_field :shop_name, class: 'text-form'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'shop_category'} 業態
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.select :shop_category, [['和食',1],['居酒屋',2],['イタリアン',3],['フレンチ',4],['中華',5],['アジア料理',6],['西洋料理',7],['カフェ',8],['定食',9],['ファストフード',10]],prompt: '未選択'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'position'} 役職
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.select :position, [['店長',1],['シェフ',2],['スタッフ',3],['オーナー',4],['その他スタッフ',5]],prompt: '未選択'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'postal_code'} 郵便番号
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.text_field :postal_code, class: 'text-form text-form__short'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'prefecture'} 都道府県
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.select :prefecture_name, Address::PREFECTURE_NAMES, prompt: '未選択'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'city'} 市区町村
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.text_field :city, class: 'text-form'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'street'} 番地
+            %span.required-mark *必須
+          .resistration-list__right
+            =f.text_field :street, class: 'text-form'
+        %li.resistration-list
+          .resistration-list__left
+            %label{for: 'building'} 建物名
+          .resistration-list__right
+            =f.text_field :building, class: 'text-form'
+        %li.resistration-list.resistration-list--bottom
+          .resistration-list__left
+            %label{for: 'tel'} 電話番号
+          .resistration-list__right
+            =f.text_field :tel, class: 'text-form text-form__short'
+        -if address.persisted?
+          %li.update-btn 
+            = f.submit '変更する', class: 'submit-btn'
+        -else
+          %li.update-btn 
+            = f.submit '登録する', class: 'submit-btn'  

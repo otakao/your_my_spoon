@@ -1,0 +1,93 @@
+.spoon-registration{
+  &__header{
+    height: 42px;
+    line-height: 28px;
+    padding: 0 8px;
+    max-width: 1280;
+    border-bottom: 2px solid #C0C0C0;
+          
+      ul.nav-bar{      
+        display: flex;
+        li{
+          padding: 10px 16px;
+        }
+      }
+    
+  }
+  &__main{
+    display: flex;
+    &__nav-bar{
+      width: 200px;
+      min-height: 100%;
+      background-color: #EEEEEE;   
+      li{
+        padding: 25px 0 25px 60px;
+        cursor: pointer;
+        color: #666;
+        background-color: #EEEEEE;
+        border-bottom: 1px solid #fff;
+      }
+    }
+    &__form{
+      margin: 26px auto;
+      min-height: 680px;
+      width: 954px;      
+      h1{
+        font-size: 24px;
+        line-height: 1.9;
+        padding: 0;
+      }
+      p1{
+        font-size:18px;
+        font-weight: 700;
+        line-height: 28px;
+        color:#333;
+      }
+      .form-group{
+        &__section1,&__section2{
+          padding: 30px 0 60px;
+          border-bottom: 1px solid #C0C0C0;
+        }
+        h2{
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 28px;
+          color: #333;
+        }
+        .form-inner{
+          width: 596px;
+          padding-bottom: 20px;
+          label{
+            display: inline-block;
+            font-size: 13px;
+            color: #333;
+            line-height: 18px;
+            margin-top: 20px;
+            margin-bottom: 7px;
+          }
+          input,textarea,select{
+            width: 100%;
+            border: 1px solid #b7b7b7;
+            padding: 9px 8px 7px 8px;
+            font-size:18px;
+            line-height: 24px;
+            color: #333;
+          }
+          .form-submit{
+            margin-top: 80px;
+            background-color: #ef6945;
+            width: 110px;
+            color: #fff;            
+          }
+          select{
+            height: 45px;
+          }
+        }
+
+      }
+
+
+    }
+  }
+
+}
