@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: your_my_spoon_production
-  username: your_my_spoon
-  password: <%= ENV['YOUR_MY_SPOON_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
