@@ -1,4 +1,5 @@
-%h5= link_to place.city, maps_path
+%h5= link_to place.user.nickname, user_path(user)
 = place.shop_name
--# = place.user.posts.title
+%br
+= place.city
 -# = link_to "マップを開く", "https://maps.google.co.jp/maps?q=loc:\#{city.latitude},\#{city.longitude}&amp;iwloc=J",target: "_blank""

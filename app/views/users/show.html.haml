@@ -24,7 +24,7 @@
         - @posts.zip(@images).each do |post,image| 
           .my-page__main__container__my-lists__list
             .my-page__main__container__my-lists__list__photo
-              = image_tag @first_image.image_url, class:"list-photo"
+              = image_tag image.first.image_url, class:"list-photo"
             .my-page__main__container__my-lists__list__content
               =link_to post_path(post), class:"item-detail" do
                 .my-page__main__container__my-lists__list__content__item-name

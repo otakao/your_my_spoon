@@ -3,10 +3,11 @@ class MapsController < ApplicationController
 
   def index
     @addresses = Address.all
+    @user = User.where(user_id: params[:id])
     @hash = Gmaps4rails.build_markers(@addresses) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
-      marker.infowindow render_to_string(partial: "maps/infowindow", locals: { place: place }) 
+      marker.infowindow render_to_string(partial: "maps/infowindow", locals: { place: place, user: @user }) 
     end
   end
 
@@ -15,6 +16,7 @@ class MapsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @hash = Gmaps4rails.build_markers(@map) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude

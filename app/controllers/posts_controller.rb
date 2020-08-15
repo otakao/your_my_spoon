@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :move_to_index, only: [:new] 
+  before_action :set_params, only: [:show, :edit, :update]
+
   def index
     @map = Map.new
     @post = Post.new
@@ -26,7 +28,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @address = @post.user.address
     @hash = Gmaps4rails.build_markers(@address) do |place, marker|
       marker.lat place.latitude
@@ -45,6 +46,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :category_id, :price, :condition, :delivery_place, :delivery_date, images_attributes: [:image]).merge(user_id: current_user.id)
+  end
+
+  def set_params
+    @post = Post.find(params[:id])
   end
 
   def move_to_index
