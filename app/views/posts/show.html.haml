@@ -1,40 +1,122 @@
-%p#notice= notice
-%p
-  %strong 郵便番号:
-  = "#{@address.postal_code}"
-  %br
-  %strong 都道府県:
-  = "#{@address.prefecture_name}"
-  %br
-  %strong 市区町村・番地:
-  = "#{@address.city}"
-  %br
-%p
-  %strong 商品名:
-  = "#{@post.title}"
-  %br
-  %strong カテゴリー:
-  = "#{@post.category_id}"
-  %br
-  %strong 商品の詳細:
-  = "#{@post.description}"
+.item-header
+  %ul.item-header__category
+    %li.item-header__category__list
+      =link_to "HOME", root_path
+    %i.fa.fa-angle-right.icon
+    %li.item-header__category__list
+      -# =link_to "#{@category.name}", category_path(@category)
+    %i.fa.fa-angle-right.icon
+      
+.item-main
+  .item-main__container
+    .item-main__container__header
+      %h.item-name
+        = "#{@post.title}"
+    .item-main__container__photo
+      = image_tag @images.first.image_url, class: "item-photo"
+    .item-main__container__price
+      %span
+        = "¥#{@post.price}"
+      - if "#{@post.delivery_place}" == "1"
+        当店にて受け取り
+      - else
+        貴店まで配送可能
+    .item-main__container__text
+      = "#{@post.description}"
 
--# %p
--#   %strong Latitude:
--#   = @place.latitude
--# %p
--#   %strong Longitude:
--#   = @place.longitude
-= link_to 'Edit', edit_post_path(@post)
+    .item-main__container__table
+      %table 
+        %tbody
+          %tr.test1
+            %th 店名
+            %td
+              = "#{@address.shop_name}"
+          %tr.test2
+            %th 業態
+            %td
+              - if "#{@address.shop_category}" == "1"
+                %span 和食
+              - elsif "#{@address.shop_category}" == "2"
+                %span 居酒屋
+              - elsif "#{@address.shop_category}" == "3"
+                %span イタリアン
+              - elsif "#{@address.shop_category}" == "4"
+                %span フレンチ
+              - elsif "#{@address.shop_category}" == "5"
+                %span 中華
+              - elsif "#{@address.shop_category}" == "6"
+                %span アジア料理
+              - elsif "#{@address.shop_category}" == "7"
+                %span 西洋料理
+              - elsif "#{@address.shop_category}" == "8"
+                %span カフェ
+              - elsif "#{@address.shop_category}" == "9"
+                %span 定食
+              - else
+                %span ファストフード
+          %tr.test3
+            %th 役職
+            %td
+              - if "#{@address.position}" == "1"
+                %span 店長
+              - elsif "#{@address.position}" == "2"
+                %span シェフ
+              - elsif "#{@address.position}" == "3"
+                %span スタッフ
+              - elsif "#{@address.position}" == "4"
+                %span オーナー
+              - elsif "#{@address.position}" == "5"
+                %span その他スタッフ
+          %tr.test4
+            %th 郵便番号
+            %td
+              = "#{@address.postal_code}"
+          %tr.test5
+            %th 都道府県
+            %td
+              = "#{@address.prefecture_name}"
+          %tr.test6
+            %th 市町村
+            %td
+              = "#{@address.city}"
+          %tr.test7
+            %th 商品の状態
+            %td
+              - if @post.condition == "1"
+                %span 常温
+              - elsif @post.condition == "2"
+                %span 冷蔵
+              - else
+                %span 冷凍
+          %tr.test8
+            %th 受取期限（到着から何日まで）
+            %td
+              - if @post.delivery_date == "1"
+                %span 当日
+              - elsif @post.condition == "2"
+                %span 1日〜3日以内
+              - elsif @post.condition == "3"
+                %span 4日〜7日以内
+              - elsif @post.condition == "4"
+                %span 2週間以内
+              - else
+                %span 2週間以上先も可
+          
+  - if current_user == @post.user
+    .item-edit
+      = link_to 'Edit', edit_post_path(@post)
+  - else
+    .item-edit
 
-= link_to 'Back', maps_path
-#map{:style => "width: 800px; height: 400px;"}
-:javascript
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(#{raw @hash.to_json});
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    // handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
-    handler.getMap().setZoom(12);
-  });
+  .item-back
+    = link_to 'Back', maps_path
+  #map{:style => "width: 800px; height: 400px;"}
+  :javascript
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(#{raw @hash.to_json});
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      // handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+      handler.getMap().setZoom(12);
+    });

@@ -2,24 +2,22 @@
   .my-page__header
   .my-page__main
     .my-page__main__photo-area
-      %span.ui_icon.photo
-        = icon('fas', 'camera')
-      %span.photo-capture
-        ヘッダー画像を追加
     .my-page__main__container
       .my-page__main__container__profile
         .my-page__main__container__profile__photo
           =image_tag "350132_s.jpg",class:"photo"
         .my-page__main__container__profile__name
-          =current_user.nickname
+          =@user.nickname
 
       %ul.mypage-lists 
-        - if current_user.address.present?
+        - if user_signed_in? && current_user.id == @user.id && current_user.address.present?
           %li.mypage-list
             =link_to 'プロフィールを編集', edit_address_path(@address), class: 'mypage-list__item shipping'
-        - else
+        - elsif user_signed_in? && current_user.id == @user.id
           %li.mypage-list
             =link_to 'プロフィールを登録', new_address_path, class: 'mypage-list__item shipping'
+        - else
+          %li.mypage-list
       .my-page__main__container__my-lists
         - @posts.zip(@images).each do |post,image| 
           .my-page__main__container__my-lists__list

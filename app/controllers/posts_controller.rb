@@ -11,11 +11,17 @@ class PostsController < ApplicationController
     @posts.each do |post|
       @images << post.images
     end
+    @categories = Category.all
   end
 
   def new
     @post = Post.new
     @post.images.new
+    @categories = Category.all
+    @names = []
+      @categories.each do |category|
+        @names << category.name
+      end
   end
 
   def create
@@ -28,6 +34,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @category = Category.find(params[:id])
+    @images = @post.images
     @address = @post.user.address
     @hash = Gmaps4rails.build_markers(@address) do |place, marker|
       marker.lat place.latitude
@@ -41,6 +49,9 @@ class PostsController < ApplicationController
 
   def destroy
   end
+
+
+
 
   private
 

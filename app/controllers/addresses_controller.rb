@@ -2,6 +2,7 @@ class AddressesController < ApplicationController
   before_action :set_params, only: [:edit, :update]
 
   def new
+    @user = current_user
     @address = Address.new
   end
 
@@ -20,6 +21,8 @@ class AddressesController < ApplicationController
   end
 
   def edit
+    @user = @address.user
+    
   end
 
   def update

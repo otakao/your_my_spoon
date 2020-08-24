@@ -1,0 +1,31 @@
+.category
+  .category__header
+  .category__main
+    .category__main__photo-area
+    .category__main__container
+      -# .category__main__container__profile
+      -#   .category__main__container__profile__photo
+      -#     =image_tag "350132_s.jpg",class:"photo"
+      -#   .category__main__container__profile__name
+      -#     =@user.nickname
+      .category__main__container__lists
+        - @post.zip(@images).each do |post,image| 
+          .category__main__container__lists__list
+            .category__main__container__lists__list__photo
+              = image_tag image.first.image_url, class:"list-photo"
+            .category__main__container__lists__list__content
+              =link_to post_path(post), class:"item-detail" do
+                .category__main__container__lists__list__content__item-name
+                  = post.title
+                .category__main__container__lists__list__content__date
+                  投稿日時:
+                  = post.created_at.to_s(:datetime_jp)
+                .category__main__container__lists__list__content__nickname
+                  ニックネーム:
+                  = post.user.nickname
+                .category__main__container__lists__list__content__shop-name
+                  店名:
+                  = @address.shop_name
+
+
+

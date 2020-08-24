@@ -9,6 +9,7 @@ class MapsController < ApplicationController
       marker.lng place.longitude
       marker.infowindow render_to_string(partial: "maps/infowindow", locals: { place: place, user: @user }) 
     end
+
   end
 
   def new

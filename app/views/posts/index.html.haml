@@ -1,9 +1,13 @@
 %body
   #js-popup.popup
     .popup__inner
-      .form
-        %form{action: maps_path , :method => "GET"}
-          %input#address{type: "search", placeholder: "検索", onclick: "codeAddress()"}/
+      =form_with url: maps_path, method: :get,id: :"address" do |f|
+        =f.text_field :address, placeholder: "地名から探す"
+        =f.submit "地図表示", onclick: "codeAddress()"
+      -# .form
+      -#   %form{action: maps_path , :method => "GET"}
+      -#     %input#address{type: "textbox", placeholder: "検索", onclick: "codeAddress()"}/
+      -#     %input{type: "button", value:"Encode", onclick: "codeAddress()"} 
           -# %input.form-text{:placeholder => "検索", :type => "seach"}/
         
           -# %input{:onclick => "codeAddress()", :type => "button", :value => "Encode"}/
@@ -21,43 +25,9 @@
     %p.content-header
       お探しのアイテム一覧
     .spoon-category__content
-      .spoon-category__content__box
-        =link_to "肉・肉加工品", class:"colona"
-        %span{class:"icon"} 
-          =icon('fas','meat')
-
-      .spoon-category__content__box
-        =link_to "魚・魚加工品", class:"help-staff"
-        %span.description
-          %span.text
-          %span.image
-            %span.image-icon
-      .spoon-category__content__box
-        =link_to "穀類・加工品", class:"food-stuff"
-        %span.description
-          %span.text
-          %span.image
-            %span.image-icon
-      .spoon-category__content__box
-        =link_to "調味料", class:"new-buiness"
-        %span.description
-          %span.text
-          %span.image
-            %span.image-icon
-      .spoon-category__content__box
-        =link_to "お酒・飲料", class:"grant-in-aid"
-        %span.description
-          %span.text
-          -# %span.image
-          %span._28xP7Srb
-            %span._34HRvzoL._2HBN-k68._3LkX-HIr
-
-      .spoon-category__content__box
-        =link_to "テイクアウト", class:"else"
-        %span.description
-          %span.text
-          %span.image
-            %span.image-icon  
+      - @categories.each do |category|
+        .spoon-category__content__box
+          =link_to "#{category.name}", category_path(category), class:"colona"  
 
   .sign_modal_wrapper
   .sign_modal

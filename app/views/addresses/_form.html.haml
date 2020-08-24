@@ -1,7 +1,7 @@
 .address-resistration
   .address-resistration__header
     %h2.address-resistration__header 
-      =current_user.nickname
+      =@user.nickname
       さんのプロフィール情報
   .address-resistration__main
     = form_with model: @address, local: true do |f|

@@ -1,0 +1,13 @@
+.Category-lists
+  - @categories.zip(@images).each do |post,image| 
+    .Category-lists__list
+      .Category-lists__list__photo
+        = image_tag image.first.image_url, class:"list-photo"
+      .Category-lists__list__content
+        =link_to post_path(post), class:"item-detail" do
+          .Category-lists__list__content__item-name
+            = post.title
+          .Category-lists__list__content__date
+            投稿日時:
+            = post.created_at.to_s(:datetime_jp)
+
