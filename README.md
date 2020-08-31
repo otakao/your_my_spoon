@@ -13,6 +13,9 @@ Restaurant Food Sharing Appは、食材を共同購入したい飲食店同士�
 # サイトURL
 調整中
 
+# DEMO
+https://gyazo.com/041488867c392578b8098329b06be39b
+
 # 主な機能
 1.ユーザー登録機能 <br>
 2.ログイン機能 <br>
