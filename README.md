@@ -6,7 +6,10 @@ Restaurant Food Sharing Appは、食材を共同購入したい飲食店同士�
 そんなコロナ禍での飲食店の悩みを解消するために、近隣の飲食店同士で食材を共同購入したい先をマッチングし、
 飲食店の食材仕入れのコスト削減を実現するために本アプリを開発しました。
 
+
 ![Restaurant Purchase App.img](https://github.com/otakao/your_my_spoon/blob/master/Restaurant%20Purchase%20App.png)
+
+
 # サイトURL
 調整中
 
