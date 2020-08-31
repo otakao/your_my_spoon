@@ -1,7 +1,7 @@
-# Restaurant Purchase Sharing App
+# Restaurant's Purchase Sharing App
 
 ## 概要
-Restaurant Purchase Sharing Appは、飲食店が食材を仕入れるときに、近隣の飲食店で食材の共同購入を募集している先を、 <br>
+Restaurant's Purchase Sharing Appは、飲食店が食材を仕入れるときに、近隣の飲食店で食材の共同購入を募集している先を、 <br>
 地図機能やカテゴリ機能を使って探すことができる飲食店マッチングアプリです。 
 
 ## 制作背景
