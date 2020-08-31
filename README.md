@@ -17,12 +17,12 @@ Restaurant Food Sharing Appは、食材を共同購入したい飲食店同士�
 5.カテゴリ検索機能
 6.MAP表示機能(Google Maps API)
 
-#注目してほしい点
+# 注目してほしい点
 1.Google Maps APIで地図上から相手を探せる機能がある点
 2.実戦を意識してブランチを切って開発している点
 3.ユーザー登録機能、ログイン機能をjavascriptで実装している点
 
-#使用技術
+# 使用技術
 ## 言語/フレームワーク
 Ruby2.7 / Ruby on Rails 5.2
 ## 開発環境
