@@ -33,7 +33,7 @@ AWS
 GitHub
 S3
 ## GCP
-Geocoding API
+Geocoding API <br>
 Maps JavaScript API
 
 # 今後の課題
