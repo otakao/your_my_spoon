@@ -102,14 +102,15 @@
               - else
                 %span 2週間以上先も可
           
-  - if current_user == @post.user
-    .item-edit
-      = link_to 'Edit', edit_post_path(@post)
-  - else
-    .item-edit
+    .item-main__below
+      - if current_user == @post.user
+        .item-main__below__edit
+          = link_to 'Edit', edit_post_path(@post)
+      - else
+        .item-main__below__edit
 
-  .item-back
-    = link_to 'Back', maps_path
+      .item-main__below__back
+        = link_to 'Back', maps_path
   #map{:style => "width: 800px; height: 400px;"}
   :javascript
     handler = Gmaps.build('Google');

@@ -221,11 +221,11 @@
       }
     }
   }
-  .item-edit{
-    text-align: center;
-  }
-  .item-back{
-    text-align: center;
+  &__below{
+    display: flex;
+    &__back{
+      padding-left: 12px;
+    }
   }
 }
 #map{

@@ -7,6 +7,6 @@ class CategoriesController < ApplicationController
     @post.each do |post|
       @images << post.images
     end
-    @address = Address.find(params[:id])
+    
   end
 end
